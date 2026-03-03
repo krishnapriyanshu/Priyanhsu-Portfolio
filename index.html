@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Priyanshu Sharma — Product Thinker & Digital Creator. Building products, stories, and impact through product management, video editing, and content writing.">
+    <meta name="keywords" content="Product Manager, Video Editor, Content Writer, Portfolio, Priyanshu Sharma">
+    <meta name="author" content="Priyanshu Sharma">
+    <meta property="og:title" content="Priyanshu Sharma — Product Thinker & Digital Creator">
+    <meta property="og:description" content="Building products, stories, and impact.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Priyanshu Sharma — Product Thinker & Digital Creator</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#111111',
+                        accent: '#2D5BFF',
+                        'accent-hover': '#1a3fd4',
+                        muted: '#6B7280',
+                        light: '#F5F5F7',
+                        border: '#E5E5E5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        display: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    },
+                    fontSize: {
+                        'hero': ['clamp(3.5rem, 8vw, 9rem)', { lineHeight: '0.95', letterSpacing: '-0.03em' }],
+                        'hero-sub': ['clamp(3rem, 7vw, 8rem)', { lineHeight: '0.95', letterSpacing: '-0.03em' }],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                        'fade-up': 'fadeUp 0.8s ease-out forwards',
+                        'slide-in': 'slideIn 0.6s ease-out forwards',
+                        'bounce-slow': 'bounceSlow 2s ease-in-out infinite',
+                        'pulse-ring': 'pulseRing 2s ease-out infinite',
+                        'text-reveal': 'textReveal 1s ease-out forwards',
+                        'scale-in': 'scaleIn 0.5s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideIn: {
+                            '0%': { opacity: '0', transform: 'translateX(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        bounceSlow: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(12px)' },
+                        },
+                        pulseRing: {
+                            '0%': { transform: 'scale(1)', opacity: '1' },
+                            '100%': { transform: 'scale(1.5)', opacity: '0' },
+                        },
+                        textReveal: {
+                            '0%': { opacity: '0', transform: 'translateY(100%)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: #2D5BFF;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 99999;
+            transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease, background 0.3s ease;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
+        }
+        .cursor-ring {
+            width: 40px;
+            height: 40px;
+            border: 1.5px solid rgba(45, 91, 255, 0.4);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 99998;
+            transition: width 0.4s ease, height 0.4s ease, border-color 0.4s ease, transform 0.08s ease;
+            transform: translate(-50%, -50%);
+        }
+        .cursor-dot.hovering {
+            width: 60px;
+            height: 60px;
+            background: rgba(45, 91, 255, 0.1);
+            mix-blend-mode: normal;
+        }
+        .cursor-ring.hovering {
+            width: 70px;
+            height: 70px;
+            border-color: rgba(45, 91, 255, 0.6);
+        }
+        @media (max-width: 768px) {
+            .cursor-dot, .cursor-ring { display: none !important; }
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.92);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .text-reveal-mask {
+            overflow: hidden;
+            display: inline-block;
+        }
+        .text-reveal-mask > * {
+            transform: translateY(110%);
+            transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .text-reveal-mask.active > * {
+            transform: translateY(0);
+        }
+        .text-outline {
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 2px #111111;
+            color: transparent;
+        }
+        @media (max-width: 768px) {
+            .text-outline {
+                -webkit-text-stroke: 1.5px #111111;
+            }
+        }
+        .case-card {
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+        }
+        .case-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+        }
+        .case-card .card-image {
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .case-card:hover .card-image {
+            transform: scale(1.05);
+        }
+        .case-card .card-arrow {
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            opacity: 0;
+            transform: translate(-10px, 10px);
+        }
+        .case-card:hover .card-arrow {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+        .video-card .play-btn {
+            transition: transform 0.4s ease, opacity 0.3s ease;
+            opacity: 0.8;
+        }
+        .video-card:hover .play-btn {
+            transform: scale(1.15);
+            opacity: 1;
+        }
+        .video-card .video-overlay {
+            transition: opacity 0.4s ease;
+        }
+        .video-card:hover .video-overlay {
+            opacity: 0.6;
+        }
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: left 0.6s ease;
+        }
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(45, 91, 255, 0.3);
+        }
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        .btn-outline {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-outline:hover {
+            background: #111111;
+            color: #FFFFFF;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(17, 17, 17, 0.15);
+        }
+        .btn-outline:active {
+            transform: translateY(0);
+        }
+        .nav-link {
+            position: relative;
+            padding-bottom: 2px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: #111111;
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F5F5F7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CCCCCC;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #999999;
+        }
+        ::selection {
+            background: rgba(45, 91, 255, 0.15);
+            color: #111111;
+        }
+        .navbar {
+            transition: background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+        }
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+        }
+        .mobile-menu {
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+            transform: translateY(-20px);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .mobile-menu.open {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: all;
+        }
+        .magnetic-btn {
+            transition: transform 0.3s ease;
+        }
+        .hr-animate {
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .hr-animate.active {
+            transform: scaleX(1);
+        }
+        .tag-pill {
+            transition: all 0.3s ease;
+        }
+        .tag-pill:hover {
+            background: #111111;
+            color: #FFFFFF;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-track {
+            animation: marquee 20s linear infinite;
+        }
+        .counter {
+            font-variant-numeric: tabular-nums;
+        }
+        .blog-card {
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .blog-card:hover {
+            transform: translateY(-6px);
+        }
+        .blog-card .blog-arrow {
+            transition: transform 0.4s ease;
+        }
+        .blog-card:hover .blog-arrow {
+            transform: translate(4px, -4px);
+        }
+        .portrait-container {
+            position: relative;
+        }
+        .portrait-container::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border: 1.5px solid rgba(45, 91, 255, 0.2);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        .portrait-container::after {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            border: 1px solid rgba(45, 91, 255, 0.08);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite reverse;
+        }
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            background: #FFFFFF;
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        .page-loader.loaded {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .loader-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #111111;
+            overflow: hidden;
+        }
+        .loader-text span {
+            display: inline-block;
+            animation: textReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-primary font-sans antialiased overflow-x-hidden">
+
+    <!-- PAGE LOADER -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-text">
+            <span>Priyanshu.</span>
+        </div>
+    </div>
+
+    <!-- CUSTOM CURSOR -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar fixed top-0 left-0 right-0 z-[1000] px-6 md:px-12 lg:px-20" id="navbar">
+        <div class="max-w-[1440px] mx-auto flex items-center justify-between h-20">
+            <a href="#" class="text-xl font-bold tracking-tight text-primary hover:text-accent transition-colors duration-300 magnetic-btn" data-cursor="hover">
+                Priyanshu<span class="text-accent">.</span>
+            </a>
+            <div class="hidden md:flex items-center gap-10">
+                <a href="#work" class="nav-link text-sm font-medium text-primary/70 hover:text-primary transition-colors duration-300" data-cursor="hover">Work</a>
+                <a href="#about" class="nav-link text-sm font-medium text-primary/70 hover:text-primary transition-colors duration-300" data-cursor="hover">About</a>
+                <a href="#writing" class="nav-link text-sm font-medium text-primary/70 hover:text-primary transition-colors duration-300" data-cursor="hover">Writing</a>
+                <a href="#contact" class="nav-link text-sm font-medium text-primary/70 hover:text-primary transition-colors duration-300" data-cursor="hover">Contact</a>
+            </div>
+            <div class="hidden md:flex items-center">
+                <a href="mailto:hello@priyanshu.dev" class="flex items-center gap-2 text-sm font-medium text-primary/60 hover:text-accent transition-colors duration-300 group" data-cursor="hover">
+                    <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                    hello@priyanshu.dev
+                    <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                </a>
+            </div>
+            <button class="md:hidden flex flex-col gap-1.5 p-2" id="mobileMenuBtn" aria-label="Toggle menu" data-cursor="hover">
+                <span class="w-6 h-0.5 bg-primary transition-all duration-300" id="menuLine1"></span>
+                <span class="w-6 h-0.5 bg-primary transition-all duration-300" id="menuLine2"></span>
+            </button>
+        </div>
+        <div class="mobile-menu md:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-xl border-b border-border" id="mobileMenu">
+            <div class="px-6 py-8 flex flex-col gap-6">
+                <a href="#work" class="text-2xl font-semibold text-primary mobile-menu-link">Work</a>
+                <a href="#about" class="text-2xl font-semibold text-primary mobile-menu-link">About</a>
+                <a href="#writing" class="text-2xl font-semibold text-primary mobile-menu-link">Writing</a>
+                <a href="#contact" class="text-2xl font-semibold text-primary mobile-menu-link">Contact</a>
+                <hr class="border-border">
+                <a href="mailto:hello@priyanshu.dev" class="text-sm text-muted flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-400 rounded-full"></span>
+                    hello@priyanshu.dev
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="relative min-h-screen flex items-center pt-20 px-6 md:px-12 lg:px-20" id="hero">
+        <div class="max-w-[1440px] mx-auto w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                <!-- Left Content -->
+                <div class="lg:col-span-8 xl:col-span-7">
+                    <div class="text-reveal-mask mb-8" id="heroIntro">
+                        <p class="text-sm md:text-base text-muted font-medium tracking-wide">
+                            <span class="inline-block w-8 h-px bg-accent mr-3 align-middle"></span>
+                            Hi, I'm Priyanshu — I build products, stories, and impact.
+                        </p>
+                    </div>
+                    <div class="mb-10">
+                        <div class="text-reveal-mask" id="heroLine1">
+                            <h1 class="text-hero font-black text-primary leading-none tracking-tighter">
+                                Product
+                            </h1>
+                        </div>
+                        <div class="text-reveal-mask" id="heroLine2">
+                            <h1 class="text-hero font-black text-primary leading-none tracking-tighter">
+                                Thinker
+                            </h1>
+                        </div>
+                        <div class="text-reveal-mask mt-1" id="heroLine3">
+                            <h1 class="text-hero-sub font-black text-outline leading-none tracking-tighter">
+                                & Digital Creator
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-4 reveal" id="heroCTA" style="opacity:0;">
+                        <a href="#work" class="btn-primary inline-flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-full text-sm font-semibold tracking-wide" data-cursor="hover">
+                            View My Work
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </a>
+                        <a href="#contact" class="btn-outline inline-flex items-center gap-3 border-2 border-primary text-primary px-8 py-4 rounded-full text-sm font-semibold tracking-wide" data-cursor="hover">
+                            Let's Build Something
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                        </a>
+                    </div>
+                    <div class="flex gap-12 mt-16 reveal" id="heroStats" style="opacity:0;">
+                        <div>
+                            <p class="text-3xl md:text-4xl font-bold text-primary counter" data-target="12">0</p>
+                            <p class="text-xs text-muted mt-1 uppercase tracking-wider">Projects</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl md:text-4xl font-bold text-primary counter" data-target="50">0</p>
+                            <p class="text-xs text-muted mt-1 uppercase tracking-wider">Videos Created</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl md:text-4xl font-bold text-primary counter" data-target="25">0</p>
+                            <p class="text-xs text-muted mt-1 uppercase tracking-wider">Articles</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================== -->
+                <!-- RIGHT - PORTRAIT (UPDATED WITH YOUR PHOTO)     -->
+                <!-- ============================================== -->
+                <div class="lg:col-span-4 xl:col-span-5 flex justify-center lg:justify-end reveal" id="heroPortrait" style="opacity:0;">
+                    <div class="portrait-container w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden bg-light flex items-center justify-center">
+                        <img 
+                            src="assets/profile.jpg" 
+                            alt="Priyanshu Sharma - Product Thinker and Digital Creator" 
+                            class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                            loading="lazy"
+                        />
+                    </div>
+                </div>
+                <!-- ============================================== -->
+
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 animate-bounce-slow">
+            <span class="text-xs text-muted uppercase tracking-[0.2em] font-medium">Scroll</span>
+            <div class="w-px h-8 bg-gradient-to-b from-primary/40 to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- MARQUEE DIVIDER -->
+    <section class="py-8 border-y border-border overflow-hidden">
+        <div class="marquee-track flex whitespace-nowrap">
+            <span class="text-6xl md:text-8xl font-black text-light tracking-tighter mx-8">PRODUCT</span>
+            <span class="text-6xl md:text-8xl font-black text-accent/10 tracking-tighter mx-8">•</span>
+            <span class="text-6xl md:text-8xl font-black text-light tracking-tighter mx-8">DESIGN</span>
+            <span class="text-6xl md:text-8xl font-black text-accent/10 tracking-tighter mx-8">•</span>
+            <span class="text-6xl md:text-8xl font-black text-light tracking-tighter mx-8">CREATE</span>
+            <span class="text-6xl md:text-8xl font-black text-accent/10 tracking-tighter mx-8">•</span>
+            <span class="text-6xl md:text-8xl font-black text-light tracking-tighter mx-8">BUILD</span>
+            <span class="text-6xl md:text-8xl font-black text-accent/10 tracking-tighter mx-8">•</span>
+            <span class="text-6xl md:text-8xl font-black text-light tracking-tighter mx-8">PRODUCT</span>
+            <span class="text-6xl md:text-8xl font-black text-accent/10 tracking-tighter mx-8">•</span>
+            <span class="text-6xl md:text-8xl font-black text-light tracking-tighter mx-8">DESIGN</span>
+            <span class="text-6xl md:text-8xl font-black text-accent/10 tracking-tighter mx-8">•</span>
+            <span class="text-6xl md:text-8xl font-black text-light tracking-tighter mx-8">CREATE</span>
+            <span class="text-6xl md:text-8xl font-black text-accent/10 tracking-tighter mx-8">•</span>
+            <span class="text-6xl md:text-8xl font-black text-light tracking-tighter mx-8">BUILD</span>
+            <span class="text-6xl md:text-8xl font-black text-accent/10 tracking-tighter mx-8">•</span>
+        </div>
+    </section>
+
+    <!-- SELECTED WORK -->
+    <section class="py-24 md:py-32 px-6 md:px-12 lg:px-20" id="work">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+                <div>
+                    <p class="text-sm text-accent font-semibold uppercase tracking-[0.2em] mb-4 reveal">Selected Work</p>
+                    <h2 class="text-4xl md:text-6xl font-bold tracking-tight reveal reveal-delay-1">
+                        Product Case<br>Studies
+                    </h2>
+                </div>
+                <p class="text-muted max-w-sm text-base leading-relaxed reveal reveal-delay-2">
+                    End-to-end product thinking — from identifying problems to delivering measurable outcomes.
+                </p>
+            </div>
+            <div class="h-px bg-border hr-animate mb-16"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Case Study 1 -->
+                <article class="case-card group bg-white border border-border rounded-2xl overflow-hidden reveal">
+                    <div class="relative overflow-hidden">
+                        <div class="card-image aspect-[4/3] bg-gradient-to-br from-accent/5 to-accent/10 flex items-center justify-center">
+                            <div class="text-center p-8">
+                                <div class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                    <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                                </div>
+                                <p class="text-xs font-semibold text-accent uppercase tracking-wider">SaaS Dashboard</p>
+                            </div>
+                        </div>
+                        <div class="card-arrow absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg">
+                            <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8">
+                        <div class="flex gap-2 mb-4">
+                            <span class="tag-pill text-xs font-medium bg-light text-muted px-3 py-1 rounded-full cursor-default">Product</span>
+                            <span class="tag-pill text-xs font-medium bg-light text-muted px-3 py-1 rounded-full cursor-default">SaaS</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 tracking-tight group-hover:text-accent transition-colors duration-300" data-cursor="hover">
+                            Redesigning User Onboarding for a B2B SaaS Platform
+                        </h3>
+                        <div class="space-y-3 text-sm text-muted leading-relaxed">
+                            <div class="flex gap-3">
+                                <span class="font-semibold text-primary/80 shrink-0 w-20">Problem</span>
+                                <p>68% drop-off during onboarding flow with users abandoning at step 3.</p>
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="font-semibold text-primary/80 shrink-0 w-20">Strategy</span>
+                                <p>User research, journey mapping, and progressive disclosure framework.</p>
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="font-semibold text-primary/80 shrink-0 w-20">Execution</span>
+                                <p>Redesigned 5-step flow into 3-step, added contextual guidance tooltips.</p>
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="font-semibold text-accent shrink-0 w-20">Outcome</span>
+                                <p class="text-accent font-medium">42% increase in completion rate, 28% faster time-to-value.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <!-- Case Study 2 -->
+                <article class="case-card group bg-white border border-border rounded-2xl overflow-hidden reveal reveal-delay-1">
+                    <div class="relative overflow-hidden">
+                        <div class="card-image aspect-[4/3] bg-gradient-to-br from-orange-50 to-orange-100/60 flex items-center justify-center">
+                            <div class="text-center p-8">
+                                <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                    <svg class="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                                </div>
+                                <p class="text-xs font-semibold text-orange-500 uppercase tracking-wider">Mobile App</p>
+                            </div>
+                        </div>
+                        <div class="card-arrow absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg">
+                            <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8">
+                        <div class="flex gap-2 mb-4">
+                            <span class="tag-pill text-xs font-medium bg-light text-muted px-3 py-1 rounded-full cursor-default">Growth</span>
+                            <span class="tag-pill text-xs font-medium bg-light text-muted px-3 py-1 rounded-full cursor-default">Mobile</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 tracking-tight group-hover:text-orange-500 transition-colors duration-300" data-cursor="hover">
+                            Building a Feature Adoption Engine for Mobile Commerce
+                        </h3>
+                        <div class="space-y-3 text-sm text-muted leading-relaxed">
+                            <div class="flex gap-3">
+                                <span class="font-semibold text-primary/80 shrink-0 w-20">Problem</span>
+                                <p>New features had less than 15% discovery rate among active users.</p>
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="font-semibold text-primary/80 shrink-0 w-20">Strategy</span>
+                                <p>Behavioral segmentation, in-app nudges, and A/B testing framework.</p>
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="font-semibold text-primary/80 shrink-0 w-20">Execution</span>
+                                <p>Implemented contextual feature cards and personalized notification flow.</p>
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="font-semibold text-orange-500 shrink-0 w-20">Outcome</span>
+                                <p class="text-orange-500 font-medium">Feature adoption rose to 47%, DAU increased by 23%.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <!-- Case Study 3 -->
+                <article class="case-card group bg-white border border-border rounded-2xl overflow-hidden reveal reveal-delay-2">
+                    <div class="relative overflow-hidden">
+                        <div class="card-image aspect-[4/3] bg-gradient-to-br from-emerald-50 to-emerald-100/60 flex items-center justify-center">
+                            <div class="text-center p-8">
+                                <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                    <svg class="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                                </div>
+                                <p class="text-xs font-semibold text-emerald-600 uppercase tracking-wider">Community</p>
+                            </div>
+                        </div>
+                        <div class="card-arrow absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg">
+                            <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8">
+                        <div class="flex gap-2 mb-4">
+                            <span class="tag-pill text-xs font-medium bg-light text-muted px-3 py-1 rounded-full cursor-default">Strategy</span>
+                            <span class="tag-pill text-xs font-medium bg-light text-muted px-3 py-1 rounded-full cursor-default">Community</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 tracking-tight group-hover:text-emerald-600 transition-colors duration-300" data-cursor="hover">
+                            Scaling a Creator Community from 0 to 10K Members
+                        </h3>
+                        <div class="space-y-3 text-sm text-muted leading-relaxed">
+                            <div class="flex gap-3">
+                                <span class="font-semibold text-primary/80 shrink-0 w-20">Problem</span>
+                                <p>No existing community; scattered audience across 4 platforms.</p>
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="font-semibold text-primary/80 shrink-0 w-20">Strategy</span>
+                                <p>Content flywheel, ambassador program, and engagement loops.</p>
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="font-semibold text-primary/80 shrink-0 w-20">Execution</span>
+                                <p>Weekly AMAs, curated resources, and cross-platform distribution pipeline.</p>
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="font-semibold text-emerald-600 shrink-0 w-20">Outcome</span>
+                                <p class="text-emerald-600 font-medium">10K members in 6 months, 78% monthly active participation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEO EDITING PORTFOLIO -->
+    <section class="py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-primary" id="videos">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+                <div>
+                    <p class="text-sm text-accent font-semibold uppercase tracking-[0.2em] mb-4 reveal">Video Portfolio</p>
+                    <h2 class="text-4xl md:text-6xl font-bold tracking-tight text-white reveal reveal-delay-1">
+                        Visual<br>Storytelling
+                    </h2>
+                </div>
+                <p class="text-white/50 max-w-sm text-base leading-relaxed reveal reveal-delay-2">
+                    Crafting compelling narratives through motion, rhythm, and visual precision.
+                </p>
+            </div>
+            <div class="h-px bg-white/10 mb-16 hr-animate"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Video 1 -->
+                <div class="video-card group rounded-2xl overflow-hidden relative cursor-pointer reveal" data-cursor="hover">
+                    <div class="aspect-video bg-gradient-to-br from-white/5 to-white/10 relative">
+                        <div class="video-overlay absolute inset-0 bg-black/40"></div>
+                        <div class="play-btn absolute inset-0 flex items-center justify-center z-10">
+                            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-2xl">
+                                <svg class="w-6 h-6 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <svg class="w-12 h-12 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-white font-semibold mb-3">Brand Launch — Product Reveal</h3>
+                        <div class="flex gap-4">
+                            <div class="flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                <span class="text-xs text-white/50 font-medium">124K views</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                                <span class="text-xs text-white/50 font-medium">8.2% CTR</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <span class="text-xs text-white/50 font-medium">72% retention</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Video 2 -->
+                <div class="video-card group rounded-2xl overflow-hidden relative cursor-pointer reveal reveal-delay-1" data-cursor="hover">
+                    <div class="aspect-video bg-gradient-to-br from-accent/10 to-accent/5 relative">
+                        <div class="video-overlay absolute inset-0 bg-black/40"></div>
+                        <div class="play-btn absolute inset-0 flex items-center justify-center z-10">
+                            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-2xl">
+                                <svg class="w-6 h-6 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <svg class="w-12 h-12 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-white font-semibold mb-3">SaaS Explainer — Feature Walkthrough</h3>
+                        <div class="flex gap-4">
+                            <div class="flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                <span class="text-xs text-white/50 font-medium">89K views</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                                <span class="text-xs text-white/50 font-medium">6.7% CTR</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <span class="text-xs text-white/50 font-medium">68% retention</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Video 3 -->
+                <div class="video-card group rounded-2xl overflow-hidden relative cursor-pointer reveal reveal-delay-2" data-cursor="hover">
+                    <div class="aspect-video bg-gradient-to-br from-purple-900/20 to-purple-800/10 relative">
+                        <div class="video-overlay absolute inset-0 bg-black/40"></div>
+                        <div class="play-btn absolute inset-0 flex items-center justify-center z-10">
+                            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-2xl">
+                                <svg class="w-6 h-6 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <svg class="w-12 h-12 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-white font-semibold mb-3">Documentary Short — Creator Economy</h3>
+                        <div class="flex gap-4">
+                            <div class="flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                <span class="text-xs text-white/50 font-medium">210K views</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                                <span class="text-xs text-white/50 font-medium">11.4% CTR</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <span class="text-xs text-white/50 font-medium">81% retention</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WRITING & CONTENT -->
+    <section class="py-24 md:py-32 px-6 md:px-12 lg:px-20" id="writing">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+                <div>
+                    <p class="text-sm text-accent font-semibold uppercase tracking-[0.2em] mb-4 reveal">Writing & Thoughts</p>
+                    <h2 class="text-4xl md:text-6xl font-bold tracking-tight reveal reveal-delay-1">
+                        Selected<br>Articles
+                    </h2>
+                </div>
+                <a href="#" class="text-sm text-muted hover:text-accent font-medium flex items-center gap-2 transition-colors duration-300 reveal reveal-delay-2 group" data-cursor="hover">
+                    View all articles
+                    <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </a>
+            </div>
+            <div class="h-px bg-border hr-animate mb-16"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <a href="#" class="blog-card group block reveal" data-cursor="hover">
+                    <div class="aspect-[16/10] bg-light rounded-xl mb-5 overflow-hidden flex items-center justify-center relative">
+                        <div class="absolute top-4 left-4">
+                            <span class="text-xs font-semibold bg-accent text-white px-3 py-1 rounded-full">Product</span>
+                        </div>
+                        <svg class="w-10 h-10 text-border" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    </div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs text-muted font-medium">Mar 2025 · 6 min read</span>
+                        <svg class="blog-arrow w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                    </div>
+                    <h3 class="text-lg font-bold tracking-tight mb-2 group-hover:text-accent transition-colors duration-300">
+                        Why Most Product Roadmaps Fail — And What to Do Instead
+                    </h3>
+                    <p class="text-sm text-muted leading-relaxed">
+                        The roadmap isn't the strategy. Here's how outcome-driven planning changes the game for PMs.
+                    </p>
+                </a>
+                <!-- Article 2 -->
+                <a href="#" class="blog-card group block reveal reveal-delay-1" data-cursor="hover">
+                    <div class="aspect-[16/10] bg-light rounded-xl mb-5 overflow-hidden flex items-center justify-center relative">
+                        <div class="absolute top-4 left-4">
+                            <span class="text-xs font-semibold bg-emerald-600 text-white px-3 py-1 rounded-full">Growth</span>
+                        </div>
+                        <svg class="w-10 h-10 text-border" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    </div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs text-muted font-medium">Feb 2025 · 8 min read</span>
+                        <svg class="blog-arrow w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                    </div>
+                    <h3 class="text-lg font-bold tracking-tight mb-2 group-hover:text-emerald-600 transition-colors duration-300">
+                        The Content Flywheel: How I Grew Engagement by 300%
+                    </h3>
+                    <p class="text-sm text-muted leading-relaxed">
+                        Distribution isn't about posting more — it's about creating systems that compound over time.
+                    </p>
+                </a>
+                <!-- Article 3 -->
+                <a href="#" class="blog-card group block reveal reveal-delay-2" data-cursor="hover">
+                    <div class="aspect-[16/10] bg-light rounded-xl mb-5 overflow-hidden flex items-center justify-center relative">
+                        <div class="absolute top-4 left-4">
+                            <span class="text-xs font-semibold bg-orange-500 text-white px-3 py-1 rounded-full">Content</span>
+                        </div>
+                        <svg class="w-10 h-10 text-border" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    </div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs text-muted font-medium">Jan 2025 · 5 min read</span>
+                        <svg class="blog-arrow w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                    </div>
+                    <h3 class="text-lg font-bold tracking-tight mb-2 group-hover:text-orange-500 transition-colors duration-300">
+                        Storytelling in Product: Why Narrative Beats Features
+                    </h3>
+                    <p class="text-sm text-muted leading-relaxed">
+                        Users don't remember specs — they remember how your product made them feel. Here's how to craft that story.
+                    </p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-light" id="about">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                <div>
+                    <p class="text-sm text-accent font-semibold uppercase tracking-[0.2em] mb-4 reveal">About</p>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8 reveal reveal-delay-1">
+                        I combine<br>
+                        <span class="text-outline">product thinking,</span><br>
+                        storytelling &<br>
+                        execution<span class="text-accent">.</span>
+                    </h2>
+                    <div class="space-y-5 text-muted leading-relaxed reveal reveal-delay-2">
+                        <p>I'm Priyanshu Sharma — a product management enthusiast who believes great products live at the intersection of deep user empathy, sharp strategy, and relentless execution.</p>
+                        <p>Beyond product, I bring stories to life through video editing and long-form content writing. Whether it's crafting a product spec, editing a brand film, or writing about growth strategy — I care about making things that matter.</p>
+                        <p>Currently exploring the space between technology, creativity, and human behavior.</p>
+                    </div>
+                    <div class="mt-10 flex flex-wrap gap-2 reveal reveal-delay-3">
+                        <span class="tag-pill text-xs font-medium bg-white text-muted px-4 py-2 rounded-full border border-border cursor-default">Product Strategy</span>
+                        <span class="tag-pill text-xs font-medium bg-white text-muted px-4 py-2 rounded-full border border-border cursor-default">User Research</span>
+                        <span class="tag-pill text-xs font-medium bg-white text-muted px-4 py-2 rounded-full border border-border cursor-default">PRDs & Specs</span>
+                        <span class="tag-pill text-xs font-medium bg-white text-muted px-4 py-2 rounded-full border border-border cursor-default">Video Editing</span>
+                        <span class="tag-pill text-xs font-medium bg-white text-muted px-4 py-2 rounded-full border border-border cursor-default">After Effects</span>
+                        <span class="tag-pill text-xs font-medium bg-white text-muted px-4 py-2 rounded-full border border-border cursor-default">Content Writing</span>
+                        <span class="tag-pill text-xs font-medium bg-white text-muted px-4 py-2 rounded-full border border-border cursor-default">SEO</span>
+                        <span class="tag-pill text-xs font-medium bg-white text-muted px-4 py-2 rounded-full border border-border cursor-default">Analytics</span>
+                        <span class="tag-pill text-xs font-medium bg-white text-muted px-4 py-2 rounded-full border border-border cursor-default">Figma</span>
+                        <span class="tag-pill text-xs font-medium bg-white text-muted px-4 py-2 rounded-full border border-border cursor-default">Notion</span>
+                    </div>
+                </div>
+                <div class="reveal reveal-delay-2">
+                    <div class="relative">
+                        <div class="aspect-square bg-white rounded-3xl border border-border p-12 flex flex-col justify-between shadow-sm">
+                            <div>
+                                <p class="text-6xl md:text-7xl font-black text-primary tracking-tighter leading-none">PS</p>
+                                <div class="w-12 h-1 bg-accent mt-4 rounded-full"></div>
+                            </div>
+                            <div class="space-y-6">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-3 h-3 bg-accent rounded-full"></div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-primary">Product Management</p>
+                                        <p class="text-xs text-muted">Primary Focus</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-3 h-3 bg-primary rounded-full"></div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-primary">Video Editing</p>
+                                        <p class="text-xs text-muted">Creative Expression</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-3 h-3 bg-muted rounded-full"></div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-primary">Content Writing</p>
+                                        <p class="text-xs text-muted">Thought Leadership</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-8 pt-6 border-t border-border">
+                                <p class="text-xs text-muted uppercase tracking-wider">Based in India</p>
+                                <p class="text-xs text-muted">Available for opportunities</p>
+                            </div>
+                        </div>
+                        <div class="absolute -top-4 -right-4 w-8 h-8 bg-accent/10 rounded-full"></div>
+                        <div class="absolute -bottom-6 -left-6 w-12 h-12 border-2 border-accent/20 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="py-24 md:py-32 px-6 md:px-12 lg:px-20" id="contact">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="max-w-3xl mx-auto text-center">
+                <p class="text-sm text-accent font-semibold uppercase tracking-[0.2em] mb-4 reveal">Get In Touch</p>
+                <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8 reveal reveal-delay-1">
+                    Let's build<br>
+                    meaningful<br>
+                    products<span class="text-accent">.</span>
+                </h2>
+                <p class="text-muted text-lg leading-relaxed mb-12 max-w-xl mx-auto reveal reveal-delay-2">
+                    Whether you have a product idea, need a video editor, or just want to talk about building things that matter — I'd love to hear from you.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 reveal reveal-delay-3">
+                    <a href="mailto:hello@priyanshu.dev" class="btn-primary inline-flex items-center gap-3 bg-primary text-white px-10 py-4 rounded-full text-sm font-semibold tracking-wide" data-cursor="hover">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        hello@priyanshu.dev
+                    </a>
+                    <a href="https://linkedin.com/in/priyanshu" target="_blank" rel="noopener" class="btn-outline inline-flex items-center gap-3 border-2 border-primary text-primary px-10 py-4 rounded-full text-sm font-semibold tracking-wide" data-cursor="hover">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        LinkedIn
+                    </a>
+                </div>
+                <div class="reveal reveal-delay-4">
+                    <div class="inline-flex items-center gap-3 bg-light rounded-full px-6 py-3">
+                        <span class="relative flex h-3 w-3">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                        </span>
+                        <span class="text-sm text-muted font-medium">Currently available for collaborations & opportunities</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-border py-12 px-6 md:px-12 lg:px-20">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-2">
+                    <span class="text-lg font-bold tracking-tight">Priyanshu<span class="text-accent">.</span></span>
+                </div>
+                <p class="text-sm text-muted">© 2025 Priyanshu Sharma. Crafted with purpose.</p>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="text-muted hover:text-primary transition-colors duration-300" data-cursor="hover" aria-label="Twitter">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/priyanshu" target="_blank" rel="noopener" class="text-muted hover:text-primary transition-colors duration-300" data-cursor="hover" aria-label="LinkedIn">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="mailto:hello@priyanshu.dev" class="text-muted hover:text-primary transition-colors duration-300" data-cursor="hover" aria-label="Email">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const loader = document.getElementById('pageLoader');
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loader.classList.add('loaded');
+                initHeroAnimations();
+            }, 800);
+        });
+
+        function initHeroAnimations() {
+            const delays = [
+                { el: '#heroIntro', delay: 100 },
+                { el: '#heroLine1', delay: 300 },
+                { el: '#heroLine2', delay: 500 },
+                { el: '#heroLine3', delay: 700 },
+                { el: '#heroCTA', delay: 1000 },
+                { el: '#heroStats', delay: 1200 },
+                { el: '#heroPortrait', delay: 600 },
+            ];
+            delays.forEach(({ el, delay }) => {
+                setTimeout(() => {
+                    const element = document.querySelector(el);
+                    if (element) {
+                        element.classList.add('active');
+                        if (element.style.opacity === '0') {
+                            element.style.opacity = '1';
+                            element.style.transform = 'translateY(0)';
+                            element.style.transition = 'opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)';
+                        }
+                    }
+                }, delay);
+            });
+            setTimeout(() => {
+                document.querySelectorAll('.counter').forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                    const start = Date.now();
+                    const tick = () => {
+                        const elapsed = Date.now() - start;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        counter.textContent = Math.round(eased * target) + '+';
+                        if (progress < 1) requestAnimationFrame(tick);
+                    };
+                    tick();
+                });
+            }, 1400);
+        }
+
+        const cursorDot = document.getElementById('cursorDot');
+        const cursorRing = document.getElementById('cursorRing');
+        let mouseX = -100, mouseY = -100;
+        let ringX = -100, ringY = -100;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorDot.style.left = mouseX + 'px';
+            cursorDot.style.top = mouseY + 'px';
+        });
+        function animateRing() {
+            ringX += (mouseX - ringX) * 0.15;
+            ringY += (mouseY - ringY) * 0.15;
+            cursorRing.style.left = ringX + 'px';
+            cursorRing.style.top = ringY + 'px';
+            requestAnimationFrame(animateRing);
+        }
+        animateRing();
+        document.querySelectorAll('[data-cursor="hover"]').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorDot.classList.add('hovering');
+                cursorRing.classList.add('hovering');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorDot.classList.remove('hovering');
+                cursorRing.classList.remove('hovering');
+            });
+        });
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }, { passive: true });
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuLine1 = document.getElementById('menuLine1');
+        const menuLine2 = document.getElementById('menuLine2');
+        let menuOpen = false;
+        mobileMenuBtn.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            mobileMenu.classList.toggle('open');
+            if (menuOpen) {
+                menuLine1.style.transform = 'rotate(45deg) translate(3px, 3px)';
+                menuLine2.style.transform = 'rotate(-45deg) translate(0px, 0px)';
+            } else {
+                menuLine1.style.transform = '';
+                menuLine2.style.transform = '';
+            }
+        });
+        document.querySelectorAll('.mobile-menu-link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuOpen = false;
+                mobileMenu.classList.remove('open');
+                menuLine1.style.transform = '';
+                menuLine2.style.transform = '';
+            });
+        });
+
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale, .text-reveal-mask, .hr-animate');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        revealElements.forEach(el => {
+            if (!el.closest('#hero')) {
+                revealObserver.observe(el);
+            }
+        });
+
+        document.querySelectorAll('.magnetic-btn').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = '';
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.scrollY - headerOffset;
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+
+        const portrait = document.querySelector('.portrait-container');
+        if (portrait) {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.scrollY;
+                if (scrolled < window.innerHeight) {
+                    portrait.style.transform = `translateY(${scrolled * 0.08}px)`;
+                }
+            }, { passive: true });
+        }
+    });
+    </script>
+</body>
+</html>
